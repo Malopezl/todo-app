@@ -8,32 +8,32 @@ function useLocalStorage(itemName, initialValue) {
 
     React.useEffect(() => {
         setTimeout(() => {
-        try {
-            const localStorageItem = localStorage.getItem(itemName);
-            let parsedItem;
+            try {
+                const localStorageItem = localStorage.getItem(itemName);
+                let parsedItem;
 
-            if (!localStorageItem) {
-            localStorage.setItem(itemName, JSON.stringify(initialValue));
-            parsedItem = [];
-            } else {
-            parsedItem = JSON.parse(localStorageItem);
+                if (!localStorageItem) {
+                    localStorage.setItem(itemName, JSON.stringify(initialValue));
+                    parsedItem = [];
+                } else {
+                    parsedItem = JSON.parse(localStorageItem);
+                }
+                setItem(parsedItem);
+                setLoading(false);
+                setsincronizedItem(true);
+            } catch (error) {
+                setError(error);
             }
-            setItem(parsedItem);
-            setLoading(false);
-            setsincronizedItem(true);
-        } catch (error) {
-            setError(error);
-        }
         }, 3000);
     }, [sincronizedItem]);
 
     const saveItem = (newItem) => {
         try {
-        const stringifiedItem = JSON.stringify(newItem);
-        localStorage.setItem(itemName, stringifiedItem);
-        setItem(newItem);
+            const stringifiedItem = JSON.stringify(newItem);
+            localStorage.setItem(itemName, stringifiedItem);
+            setItem(newItem);
         } catch (error) {
-        setError(error);
+            setError(error);
         }
     };
 

@@ -39,10 +39,6 @@ function useTodos() {
     const completeTodo = (text) => {
         const todoIndex = todos.findIndex(todo => todo.text === text);
         const newTodos = [...todos];
-        // todos[todoIndex] = {
-        //   text: todos[todoIndex].text,
-        //   completed: true,
-        // };
         newTodos[todoIndex].completed = true;
         saveTodos(newTodos);
     };
